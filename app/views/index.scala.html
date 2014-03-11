@@ -1,9 +1,15 @@
-@(message: String)
+@(start: String, message: String, ver2: String, ver3: String)
 
 @main("Welcome to Play") {
 
-   <h1>魔導村へようこそ！</h1>
-   <p>@message</p>
-   <p>ファイヤー( ´ﾟдﾟ｀)ｱﾁｬｰ</p>
+   	<h1>魔導村（まどうそん）へようこそ！</h1>
+   	<p>@message</p>
+   	<p>ファイヤー( ´ﾟдﾟ｀)ｱﾁｬｰ</p>
 
+	<ul>
+		<li>@start</li>
+		<li>@ver2</li>
+		<li>@ver3</li>
+	</ul>
+	
 }

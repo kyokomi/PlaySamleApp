@@ -12,7 +12,11 @@ public class Application extends Controller {
 	 * @return
 	 */
     public static Result index() {
-        return ok(index.render("Your new application is ready."));
+        return ok(index.render(
+        		"はじめ！",
+        		"Your new application is ready.",
+        		"宇宙エロ本争奪ゲームVer2",
+        		"宇宙エロ本争奪ゲームVer3"));
     }
 
 }
