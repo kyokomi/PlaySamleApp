@@ -2,14 +2,41 @@
 
 @main("Welcome to Play") {
 
-   	<h1>魔導村（まどうそん）へようこそ！</h1>
-   	<p>@message</p>
-   	<p>ファイヤー( ´ﾟдﾟ｀)ｱﾁｬｰ</p>
-
+<div class="container">
+	<div class="page-header">
+        <h1>魔導村（まどうそん）へようこそ！</h1>
+    </div>
+    
+    <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
+    
+    <p>@message <a href="">the sticky footer with a fixed navbar</a> if need be, too.</p>
 	<ul>
 		<li>@start</li>
 		<li>@ver2</li>
 		<li>@ver3</li>
 	</ul>
+	
+	<hr>
+	
+	<div class="bs-docs-grid">
+	    <div class="row show-grid">
+	  		<div class="col-md-2 text-right">
+	  			<img src="@routes.Assets.at("images/icons/icont17.png")" alt="琥珀さん" class="img-thumbnail refrect">
+			</div>
+	  		<div class="col-md-5"><pre class="message-text">どもどもー！琥珀ちゃんですよ〜（ ＾ω＾）</pre></div>
+	    </div>
+	    <div class="row show-grid">
+	    	<div class="col-md-1"></div>
+	  		<div class="col-md-5"><pre class="message-text">弓塚さつきです。よろしくお願いします m(_ _)m。</pre></div>
+	  		<div class="col-md-2 text-left">
+	  			<img src="@routes.Assets.at("images/icons/icont20.png")" alt="さっちん" class="img-thumbnail">
+			</div>
+	    </div>
+	    <div class="row show-grid">
+	    </div>
+    </div>
+  
+	
+</div>
 	
 }

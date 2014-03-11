@@ -9,3 +9,20 @@ h1 {
 	color: #ccffcc;
 	padding: 3px; 
 }
+
+.show-grid {
+    margin-bottom: 15px
+}
+
+.message-text {
+	margin-top: 30px
+}
+
+.refrect{
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
