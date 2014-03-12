@@ -1,4 +1,4 @@
-@(start: String, message: String, ver2: String, ver3: String)
+@(msg: String, form1: Form[Application.SampleForm]))
 
 @main("Welcome to Play") {
 
@@ -9,13 +9,8 @@
     
     <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
     
-    <p>@message <a href="">the sticky footer with a fixed navbar</a> if need be, too.</p>
-	<ul>
-		<li>@start</li>
-		<li>@ver2</li>
-		<li>@ver3</li>
-	</ul>
-	
+    <p>@msg</p>
+
 	<hr>
 	
 	<div class="bs-docs-grid">
@@ -36,7 +31,13 @@
 	    </div>
     </div>
   
+  	@helper.form(action = routes.Application.send) {
+  		@(helper.inputText (
+  			field = form1("message")
+  		))
 	
+		<input type="submit">
+	}
 </div>
 	
 }

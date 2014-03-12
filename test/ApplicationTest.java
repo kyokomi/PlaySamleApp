@@ -4,17 +4,20 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
+
+import controllers.Application.SampleForm;
+
 import org.junit.*;
 
 import play.mvc.*;
 import play.test.*;
 import play.data.DynamicForm;
+import play.data.Form;
 import play.data.validation.ValidationError;
 import play.data.validation.Constraints.RequiredValidator;
 import play.i18n.Lang;
 import play.libs.F;
 import play.libs.F.*;
-
 import static play.test.Helpers.*;
 import static org.fest.assertions.Assertions.*;
 
@@ -35,9 +38,10 @@ public class ApplicationTest {
 
     @Test
     public void renderTemplate() {
-        Content html = views.html.index.render("Your new application is ready.", "a", "b", "c");
+        Content html = views.html.index.render("何か書いて", 
+        		new play.data.Form<>(controllers.Application.SampleForm.class));
         assertThat(contentType(html)).isEqualTo("text/html");
-        assertThat(contentAsString(html)).contains("Your new application is ready.");
+        assertThat(contentAsString(html)).contains("何か書いて");
     }
 
 
