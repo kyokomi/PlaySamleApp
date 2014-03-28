@@ -1,4 +1,4 @@
-@(msg: String, datas: List[Message], form1: Form[Application.SampleForm]))
+@(msg: String, datas: List[Message], datas2: List[Member])
 
 @main("Welcome to Play") {
 
@@ -10,8 +10,10 @@
     <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
     
     <p>@msg</p>
-    
+
     <pre>@datas</pre>
+
+    <pre>@datas2</pre>
 
 	<hr>
 	

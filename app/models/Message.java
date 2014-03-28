@@ -23,7 +23,6 @@ public class Message extends Model {
 	public Long id;
 	@Required
 	public String name;
-	public String mail;
 	@Required
 	public String message;
 	@CreatedTimestamp
@@ -33,7 +32,11 @@ public class Message extends Model {
 	
 	@Override
 	public String toString() {
-		return "[id:" + id + ", name:" + name + ", mail:" + mail +
+		return "[id:" + id + ", name:" + name +
 				",message:" + message + ", postdata:" + postdate +  "]";
 	}
+
+    public static Message findByName(String input) {
+        return Message.find.where().eq("name", input).findList().get(0);
+    }
 }

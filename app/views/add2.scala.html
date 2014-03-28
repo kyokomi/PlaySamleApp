@@ -1,22 +1,25 @@
-@(msg: String, form1: Form[models.Message])
+@(msg: String, form1: Form[models.Member])
 
 @main("Sample Page") {
 
 <div class="container">
 	<div class="page-header">
-		<h1>ADD MESSAGE</h1>
+		<h1>ADD MEMBER</h1>
 	</div>
 	
 	<p class="lead">@msg</p>
 	
 	<div>
-	@helper.form(action = routes.Application.create) {
+	@helper.form(action = routes.Application.create2) {
 	
 		@(helper.inputText (
 			field = form1("name")
 		))
-		@(helper.textarea (
-			field = form1("message")
+		@(helper.inputText (
+			field = form1("mail")
+		))
+		@(helper.inputText (
+			field = form1("tel")
 		))
 		
 		<input type="submit">

@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 
+import models.Member;
 import models.Message;
 import play.*;
 import play.data.Form;
@@ -30,9 +31,12 @@ public class Application extends Controller {
 	 */
     public static Result index() {
     	List<Message> dataList = Message.find.all();
-        return ok(index.render("ロビー", dataList, new Form<>(SampleForm.class)));
+        List<Member> data2List = Member.find.all();
+        return ok(index.render("ロビー", dataList,data2List));
     }
-    
+
+    // Message Action =======================
+
     public static Result add() {
     	Form<Message> f = new Form<>(Message.class);
     	return ok(add.render("投稿フォーム", f));
@@ -47,7 +51,31 @@ public class Application extends Controller {
     		return badRequest(add.render("ERROR", f));
     	}
     }
-    
+
+    // Member Action =======================
+
+    // メンバー作成フォームのAction
+    public static Result add2() {
+        Form<Member> f = new Form<>(Member.class);
+        return ok(add2.render("メンバー登録フォーム", f));
+    }
+
+    public static Result create2() {
+        Form<Member> f = new Form<>(Member.class).bindFromRequest();
+        if (!f.hasErrors()) {
+            Member data = f.get();
+            data.save();
+            return redirect("/");
+        } else {
+            return badRequest(add2.render("ERROR", f));
+        }
+    }
+
+
+
+
+    // =====================================
+
     public static Result setitem() {
     	Form<Message> f = new Form<>(Message.class);
     	return ok(item.render("ID番号を入力。", f));
