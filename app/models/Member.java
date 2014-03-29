@@ -3,8 +3,12 @@ package models;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kyokomi on 2014/03/29.
@@ -23,10 +27,18 @@ public class Member extends Model {
 
     public String tel;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Message> messages = new ArrayList<>();
+
     public static Finder<Long, Member> find = new Finder<>(Long.class, Member.class);
 
     public String toString() {
-        return ("[id:" + id + ", name:" + name + ", mail:" + mail + ", tel:" + tel + "]");
+        String ids = "{ids:";
+        for (Message message : messages) {
+            ids += " " + message.id;
+        }
+        ids += "}";
+        return ("[id:" + id + ", message:" + ids + ", name:" + name + ", mail:" + mail + ", tel:" + tel + "]");
     }
     public static Member findByName(String input) {
         return Member.find.where().eq("name", input).findList().get(0);

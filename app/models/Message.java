@@ -2,8 +2,7 @@ package models;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
@@ -27,13 +26,18 @@ public class Message extends Model {
 	public String message;
 	@CreatedTimestamp
 	public Date postdate;
-	
+
+    // Cascadeの指定は必ず必要なわけではない
+    // 場合によっては手作業で更新したほうが良い場合もあるので、必要に応じて使うとよい。
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Member member;
+
 	public static Finder<Long, Message> find = new Finder<>(Long.class, Message.class);
 	
 	@Override
 	public String toString() {
-		return "[id:" + id + ", name:" + name +
-				",message:" + message + ", postdata:" + postdate +  "]";
+		return "[id:" + id + ", member:<" + member.toString() +
+				">, message:" + message + ", postdata:" + postdate +  "]";
 	}
 
     public static Message findByName(String input) {
