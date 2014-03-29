@@ -22,3 +22,11 @@ GET     /edit                       controllers.Application.edit()
 GET     /del                        controllers.Application.delete()
 POST    /remove                     controllers.Application.remove()
 GET     /find                       controllers.Application.find()
+
+GET     /json/hoge                  controllers.Application.hoge()
+
+GET     /sample                     controllers.SampleController.index()
+POST    /sample/send                controllers.SampleController.send()
+
+GET     /sample/sample2             controllers.SampleController.sample2()
+POST    /sample/send2               controllers.SampleController.send2()

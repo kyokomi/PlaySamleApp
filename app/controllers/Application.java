@@ -67,6 +67,8 @@ public class Application extends Controller {
             Member data = f.get();
             data.save();
             return redirect("/");
+            // TODO: ほんとはこっちがいいけどIDEがエラーでうざいので。。。
+//            return redirect(controllers.routes.Application.index());
         } else {
             return badRequest(add2.render("ERROR", f));
         }
@@ -74,8 +76,11 @@ public class Application extends Controller {
 
 
 
-
     // =====================================
+
+    public static Result hoge() {
+        return ok("{'hoge': 'aaaaaa'}").as("application/json");
+    }
 
     public static Result setitem() {
     	Form<Message> f = new Form<>(Message.class);

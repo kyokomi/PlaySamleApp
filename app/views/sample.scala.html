@@ -1,0 +1,43 @@
+@(msg: String, form1: Form[SampleController.SampleForm])
+
+@main("Welcome to Form Sample Page") {
+
+<div class="page-content inset">
+    <p>@msg</p>
+
+    @helper.form(action = routes.SampleController.send){
+
+        @(helper.inputText (
+            field = form1("input"),
+            args = 'size->30
+        ))
+        @(helper.inputPassword (
+            field = form1("pass"),
+            args = 'size->30
+        ))
+        @(helper.checkbox (
+            field = form1("check")
+        ))
+        @(helper.inputRadioGroup (
+            field = form1("radio"),
+            options = Seq("windows"->"MS-Windows", "mac"->"Mac OS X", "linux"->"Linux")
+        ))
+        @(helper.select (
+            field = form1("sel"),
+            options = Seq("jp"->"日本", "us"->"米国", "uk"->"英国"),
+            args = 'size->3
+        ))
+        @(helper.textarea (
+            field = form1("area"),
+            args = 'size->30, 'rows->3
+        ))
+        @(helper.inputDate (
+            field = form1("date")
+        ))
+
+        <input type="submit">
+    }
+
+</div>
+
+}

@@ -6,6 +6,7 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import controllers.Application.SampleForm;
+import models.Member;
 import models.Message;
 
 import org.junit.*;
@@ -40,9 +41,8 @@ public class ApplicationTest {
     @Test
     public void renderTemplate() {
     	List<Message> dataList = Message.find.all();
-    	
-        Content html = views.html.index.render("ロビー", dataList,
-        		new play.data.Form<>(controllers.Application.SampleForm.class));
+        List<Member> data2List = Member.find.all();
+        Content html = views.html.index.render("ロビー", dataList, data2List);
         assertThat(contentType(html)).isEqualTo("text/html");
         assertThat(contentAsString(html)).contains("ロビー");
     }

@@ -1,0 +1,21 @@
+@(msg: String, form1: Form[SampleController.Sample2Form])
+
+@main("Welcome to Form Sample Page") {
+
+<div class="page-content inset">
+    <p>@msg</p>
+
+    @helper.form(action = routes.SampleController.send2){
+
+        @helper.repeat(field = form1("inputs"), min = 3){fld =>
+            @helper.inputText(
+                field = fld, '_label ->"input"
+            )
+        }
+
+        <input type="submit">
+    }
+
+</div>
+
+}
