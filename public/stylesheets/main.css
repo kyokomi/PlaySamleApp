@@ -1,14 +1,4 @@
-body {
-	font-size: 12pt;
-	color: #006600;
-}
-h1 {
-	font-size: 18pt;
-	font-weight: bold;
-	background-color: #66aa66;
-	color: #ccffcc;
-	padding: 3px; 
-}
+
 
 .show-grid {
     margin-bottom: 15px
@@ -25,4 +15,18 @@ h1 {
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: "FlipH";
+}
+
+#navi-footer {
+  position: absolute;
+  bottom: 0;
+  width: 250px;
+  /* Set the fixed height of the footer here */
+  height: 24px;
+  background-color: rgba(255,255,255,.2);
+}
+
+#navi-footer > .container {
+  /*padding-right: 15px;*/
+  /*padding-left: 15px;*/
 }

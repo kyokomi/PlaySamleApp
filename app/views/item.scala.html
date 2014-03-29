@@ -2,10 +2,6 @@
 
 @main("Sample Page") {
 
-<div class="container">
-	<div class="page-header">
-        <h1>input ID Number</h1>
-    </div>
     <p class="lead">@msg</p>
     @helper.form(action = routes.Application.edit) {
     	@(helper.inputText (
@@ -17,5 +13,4 @@
     	
     	<input type="submit">
     }
-</div>
 }
