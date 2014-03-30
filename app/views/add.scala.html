@@ -1,4 +1,4 @@
-@(msg: String, form1: Form[models.Message])
+@(msg: String, form1: Form[models.Message], opts: List[Tuple2[String,String]])
 
 @main("add Message") {
 
@@ -9,8 +9,9 @@
 	<div>
 	@helper.form(action = routes.Application.create) {
 	
-		@(helper.inputText (
-			field = form1("name")
+		@(helper.select (
+			field = form1("name"),
+            options = opts
 		))
 		@(helper.textarea (
 			field = form1("message")

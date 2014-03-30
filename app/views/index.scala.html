@@ -5,36 +5,41 @@
 <div class="page-content inset">
 
     <p class="lead">Playframework2であそんでます</p>
-    
-    <p>@msg</p>
 
+    <p id="message">@msg</p>
+    <p>
+        <input type="text" id="input">
+        <button id="sendbtn">submmit</button>
+    </p>
     <pre>message = @{datas.size} member = @{datas2.size}</pre>
 
 	<hr>
 
     <div class="bs-docs-grid">
     @for(msg <-datas){
-        <div class="row show-grid">
-            <p>@msg.id</p>
-            <div class="col-md-2 text-right">
-                <img src="@routes.Assets.at("images/icons/icont17.png")" alt="@msg.name" class="img-thumbnail refrect">
+        <p>@msg.id</p>
+        @if(msg.id % 2 == 1){
+            <div class="row show-grid">
+                <div class="col-md-2 text-right">
+                    <img src="@routes.Assets.at("images/icons/icont17.png")" alt="@msg.name" class="img-thumbnail refrect">
+                </div>
+                <div class="col-md-5"><pre class="message-text">@msg.message</pre></div>
             </div>
-            <div class="col-md-5"><pre class="message-text">@msg.message</pre></div>
-        </div>
+        }else{
+            <div class="row show-grid">
+                <div class="col-md-1"></div>
+                <div class="col-md-5"><pre class="message-text">@msg.message</pre></div>
+                <div class="col-md-2 text-left">
+                    <img src="@routes.Assets.at("images/icons/icont20.png")" alt="@msg.name" class="img-thumbnail">
+                </div>
+            </div>
+            <div class="row show-grid">
+            </div>
+        }
     }
     </div>
 
-    <!-- 右向き -->
-    <!--<div class="row show-grid">-->
-        <!--<div class="col-md-1"></div>-->
-        <!--<div class="col-md-5"><pre class="message-text">弓塚さつきです。よろしくお願いします m(_ _)m。</pre></div>-->
-        <!--<div class="col-md-2 text-left">-->
-            <!--<img src="@routes.Assets.at("images/icons/icont20.png")" alt="さっちん" class="img-thumbnail">-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="row show-grid">-->
-    <!--</div>-->
-    <!---->
 </div>
 
+<script src="@routes.Assets.at("javascripts/index.js")" type="text/javascript"></script>
 }

@@ -1,13 +1,17 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.Member;
 import models.Message;
 import play.*;
 import play.data.Form;
 import play.data.validation.Constraints.Required;
+import play.libs.Json;
 import play.mvc.*;
+import scala.Tuple2;
 import views.html.*;
 import views.html.helper.input;
 import static play.data.Form.*;
@@ -39,7 +43,14 @@ public class Application extends Controller {
 
     public static Result add() {
     	Form<Message> f = new Form<>(Message.class);
-    	return ok(add.render("投稿フォーム", f));
+
+        List<Member> names = Member.find.select("name").findList();
+        List<Tuple2<String, String>> opts = new ArrayList<>();
+        for (Member mem : names) {
+            opts.add(new Tuple2(mem.name, mem.name));
+        }
+
+    	return ok(add.render("投稿フォーム", f, opts));
     }
     public static Result create() {
     	Form<Message> f = new Form<>(Message.class).bindFromRequest();
@@ -49,7 +60,12 @@ public class Application extends Controller {
     		data.save();
     		return redirect("/");
     	} else {
-    		return badRequest(add.render("ERROR", f));
+            List<Member> names = Member.find.select("name").findList();
+            List<Tuple2<String, String>> opts = new ArrayList<>();
+            for (Member mem : names) {
+                opts.add(new Tuple2(mem.name, mem.name));
+            }
+    		return badRequest(add.render("ERROR", f, opts));
     	}
     }
 
@@ -78,8 +94,18 @@ public class Application extends Controller {
 
     // =====================================
 
-    public static Result hoge() {
-        return ok("{'hoge': 'aaaaaa'}").as("application/json");
+    public static Result ajax() {
+        String input = request().body().asFormUrlEncoded().get("input")[0];
+        ObjectNode result = Json.newObject();
+        if (input == null) {
+            result.put("status", "BAD");
+            result.put("message", "Can't get sending data...");
+            return badRequest(result);
+        } else {
+            result.put("status", "OK");
+            result.put("message", input + "受け取ったよ！");
+            return ok(result);
+        }
     }
 
     public static Result setitem() {
