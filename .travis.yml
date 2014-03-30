@@ -1,7 +1,14 @@
 language: java
 env:
-  - PLAY_VERSION=2.2.2
+- PLAY_VERSION=2.2.2
 before_script:
-  - wget http://downloads.typesafe.com/play/${PLAY_VERSION}/play-${PLAY_VERSION}.zip
-  - unzip -q play-${PLAY_VERSION}.zip
+- wget http://downloads.typesafe.com/play/${PLAY_VERSION}/play-${PLAY_VERSION}.zip
+- unzip -q play-${PLAY_VERSION}.zip
 script: play-${PLAY_VERSION}/play test
+deploy:
+  provider: heroku
+  api_key:
+    secure: bDoqwDu/S5j0AOPnZuUGdY2Mats+Kbn68Q2ls2PzxaezdxPx5fIs6t0mYqt8rm/P7GqM9yzHwgbzNhELfT3IWCdDaLYmKWY3/SgiuXVjPpjQ+diwRKuL6f02vhrUdsktsq53+eQP/AcJqr2TUWHs1nzzCU3YLY3v1dlqtJVjKzA=
+  app: playsampleapp
+  on:
+    repo: kyokomi/PlaySamleApp
